@@ -1,0 +1,78 @@
+# This file managed by Salt, do not edit by hand!!
+# Defaults for jetty see /etc/init.d/jetty for more
+{% from "solr_jetty/map.jinja" import solr_jetty_settings with context %}
+# change to 0 to allow Jetty to start
+NO_START={{ solr_jetty_settings.jetty.no_start }} 
+
+# change to 'no' or uncomment to use the default setting in /etc/default/rcS 
+VERBOSE={{ solr_jetty_settings.jetty.verbose }}
+
+# Run Jetty as this user ID (default: jetty)
+# Set this to an empty string to prevent Jetty from starting automatically
+JETTY_USER={{ solr_jetty_settings.jetty.user }}
+
+# Listen to connections from this network host
+# Use 0.0.0.0 as host to accept all connections.
+# Uncomment to restrict access to localhost
+#JETTY_HOST=$(uname -n)
+JETTY_HOST={{ solr_jetty_settings.jetty.host }}
+
+# The network port used by Jetty
+#JETTY_PORT=8080
+JETTY_PORT={{ solr_jetty_settings.jetty.port }}
+
+# Timeout in seconds for the shutdown of all webapps
+#JETTY_SHUTDOWN=30
+{% if solr_jetty_settings.jetty.shutdown is defined %}
+JETTY_SHUTDOWN={{ solr_jetty_settings.jetty.shutdown }}
+{% endif %}
+
+# Additional arguments to pass to Jetty    
+#JETTY_ARGS=
+{% if solr_jetty_settings.jetty.args is defined %}
+JETTY_ARGS={{ solr_jetty_settings.jetty.args }}
+{% endif %}
+
+# Extra options to pass to the JVM         
+#JAVA_OPTIONS="-Xmx256m -Djava.awt.headless=true -Djava.library.path=/usr/lib"
+{% if solr_jetty_settings.jetty.java_options is defined %}
+JETTY_ARGS={{ solr_jetty_settings.jetty.java_options }}
+{% endif %}
+
+# Home of Java installation.
+#JAVA_HOME=
+{% if solr_jetty_settings.jetty.java_home is defined %}
+JETTY_HOME={{ solr_jetty_settings.jetty.java_home }}
+{% endif %}
+
+# The first existing directory is used for JAVA_HOME (if JAVA_HOME is not
+# defined in /etc/default/jetty). Should contain a list of space separated directories.
+#JDK_DIRS="/usr/lib/jvm/default-java /usr/lib/jvm/java-6-sun"
+{% if solr_jetty_settings.jetty.jdk_dirs is defined %}
+JDK_DIRS={{ solr_jetty_settings.jetty.jdk_dirs }}
+{% endif %}
+
+# Java compiler to use for translating JavaServer Pages (JSPs). You can use all
+# compilers that are accepted by Ant's build.compiler property.
+#JSP_COMPILER=jikes
+{% if solr_jetty_settings.jetty.jsp_compiler is defined %}
+JSP_COMPILER={{ solr_jetty_settings.jetty.jsp_compiler }}
+{% endif %}
+
+# Jetty uses a directory to store temporary files like unpacked webapps
+#JETTY_TMP=/var/cache/jetty
+{% if solr_jetty_settings.jetty.tmp is defined %}
+JETTY_TMP={{ solr_jetty_settings.jetty.tmp }}
+{% endif %}
+
+# Jetty uses a config file to setup its boot classpath
+#JETTY_START_CONFIG=/etc/jetty/start.config
+{% if solr_jetty_settings.jetty.start is defined %}
+JETTY_START={{ solr_jetty_settings.jetty.start }}
+{% endif %}
+
+# Default for number of days to keep old log files in /var/log/jetty/
+#LOGFILE_DAYS=14
+{% if solr_jetty_settings.jetty.logfile_days is defined -%}
+JETTY_START={{ solr_jetty_settings.jetty.logfile_days }}
+{% endif %}

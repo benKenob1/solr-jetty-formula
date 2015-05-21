@@ -1,0 +1,11 @@
+solr_jetty:
+  package: solr-jetty
+  service: jetty
+  jetty:
+    conf: /etc/default/jetty
+    no_start: 0
+    verbose:  yes
+    user: jetty
+    host: 127.0.0.1
+    port: 8080
+    state: running

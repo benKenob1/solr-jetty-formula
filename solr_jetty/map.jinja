@@ -1,0 +1,17 @@
+{% import_yaml "solr_jetty/defaults.yaml" as default_settings %}
+
+{% set os_map = salt['grains.filter_by']({
+    'Debian': {
+        'package': 'solr-jetty',
+        'service': 'jetty',
+    },
+    'RedHat': {
+        },
+}, merge=salt['pillar.get']('solr_jetty:lookup')) %}
+
+{# Merge os_map into settings dictionary #}
+{% do default_settings.solr_jetty.update(os_map) %}
+
+{# Update settings defaults from pillar data #}
+{% set solr_jetty_settings = salt['pillar.get']('solr_jetty', default=default_settings.solr_jetty,
+  merge=True) %}

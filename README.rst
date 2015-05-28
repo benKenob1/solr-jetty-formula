@@ -2,7 +2,7 @@
 solr-jetty
 ===
 
-Formulas to set up solr with
+Formulas to set up solr with jetty.
 
 .. note::
 

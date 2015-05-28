@@ -1,6 +1,6 @@
-===
+==========
 solr-jetty
-===
+==========
 
 Formulas to set up solr with jetty.
 
@@ -11,10 +11,9 @@ Formulas to set up solr with jetty.
 
 Available states
 ================
-
 .. contents::
     :local:
-
+    
 ``solr_jetty``
 --------------
 

@@ -42,7 +42,7 @@ JETTY_ARGS={{ solr_jetty_settings.jetty.java_options }}
 # Home of Java installation.
 #JAVA_HOME=
 {% if solr_jetty_settings.jetty.java_home is defined %}
-JETTY_HOME={{ solr_jetty_settings.jetty.java_home }}
+JAVA_HOME={{ solr_jetty_settings.jetty.java_home }}
 {% endif %}
 
 # The first existing directory is used for JAVA_HOME (if JAVA_HOME is not
